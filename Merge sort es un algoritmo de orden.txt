@@ -1,0 +1,28 @@
+//Merge sort es un algoritmo de ordenamiento eficiente y general que sigue la //estrategia de "divide y vencerás": divide una lista o arreglo en mitades, //ordena cada mitad recursivamente y luego las fusiona de forma ordenada para //producir la lista final ordenada. Es un algoritmo estable y con una //complejidad temporal de O(n log n). 
+
+public static void main(String[] args) {
+        int[] arr = {38, 27, 43, 3, 9, 82, 10};
+
+        System.out.println("Arreglo original:");
+        printArray(arr);
+
+        mergeSort(arr, 0, arr.length - 1);
+
+        System.out.println("\nArreglo ordenado con Merge Sort:");
+        printArray(arr);
+    }
+
+    // Método Merge Sort (divide el arreglo en mitades)
+    public static void mergeSort(int[] arr, int left, int right) {
+        if (left < right) {
+            // Encontrar la mitad
+            int middle = (left + right) / 2;
+
+            // Ordenar la primera y segunda mitad
+            mergeSort(arr, left, middle);
+            mergeSort(arr, middle + 1, right);
+
+            // Combinar ambas mitades
+            merge(arr, left, middle, right);
+        }
+    }
